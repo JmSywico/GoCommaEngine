@@ -93,6 +93,12 @@ int main()
 	if (!glfwInit())
 		return -1;
 
+	// --- Ask user for number of particles per second ---
+	int userParticlesPerSecond = 100;
+	std::cout << "Define number of particles to spawn: ";
+	std::cin >> userParticlesPerSecond;
+	if (userParticlesPerSecond < 1) userParticlesPerSecond = 1;
+
 	GLFWwindow* window = glfwCreateWindow(800, 800, "GoComma Engine", nullptr, nullptr);
 	if (!window)
 	{
@@ -166,8 +172,9 @@ int main()
 	std::uniform_real_distribution<float> vzDist(-40.0f, 40.0f); 
 
 	// Particle spawn rate
-	const float particlesPerSecond = 100.0f;
 	float particleSpawnAccumulator = 0.0f;
+	float particlesPerSecond = static_cast<float>(userParticlesPerSecond);
+
 	/*
 	* ===========================================================
 	* ===================== Main Program ========================
