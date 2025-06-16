@@ -94,7 +94,7 @@ int main()
 		return -1;
 
 	// --- Ask user for number of particles per second ---
-	int userParticlesPerSecond = 100;
+	int userParticlesPerSecond;
 	std::cout << "Define number of particles to spawn: ";
 	std::cin >> userParticlesPerSecond;
 	if (userParticlesPerSecond < 1) userParticlesPerSecond = 1;
